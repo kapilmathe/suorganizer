@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+
+    <title>
+        {% block title %}
+        Startup Organizer
+        {% endblock %}
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--[if IR]><script src="http://html5shiv.googlecode.com/svn/trunck/html5.js">
+    </script><![endif]-->
+    {% block head %}
+
+    {% endblock %}
+</head>
+
+<body>
+<div class ="container">
+    <!--container-->
+    <header class="row">
+        <div class="offset-by-one ten columns">
+
+            <h1 class="logo" align="center">Startup Organizer</h1>
+        </div>
+    </header>
+    <nav style="static/site/normalize">
+        <ul class="messages">
+            <li><a class="navigation_bar" href="{% url 'blog_post_list' %}">Blog</a></li>
+            <li><a class="navigation_bar" href="{% url 'organizer_startup_list' %}">Startups</a></li>
+            <li><a class="navigation_bar" href="{% url 'organizer_tag_list' %}">Tags</a></li>
+            <li><a class="navigation_bar" href="{% url 'about' %}">About</a></li>
+            <li><a class="navigation_bar" href="{% url 'contact_old' %}">Contact</a></li>
+            <li><a class="navigation_bar" href="{% url 'contact' %}">Feedback</a></li>
+        </ul>
+    </nav>
+    {% if messages %}
+        <div class="row">
+          <div class="twelve columns">
+            <ul class="messages">
+              {% for message in messages %}
+                {% if message.tags %}
+                  <li class="{{ message.tags }}">
+                {% else %}
+                  <li>
+                {% endif %}
+                {{ message }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+    {% endif %}
+    <main>
+        {% block content %}
+        This is default Content !
+        {% endblock %}
+    </main>
+</div>
+<!--container-->
+<footer>
+    <p>
+        &copy;2016
+        <a href="https://google.com/">Kapil Mathe</a>
+    </p>
+    <p>
+        Created for <a href="https://Django-Unleashed.com/">Django Unleashed</a>
+    </p>
+</footer>
+</body>
+</html>

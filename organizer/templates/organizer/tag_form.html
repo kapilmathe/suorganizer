@@ -1,0 +1,37 @@
+{%extends parent_template|default:"organizer/base_organizer.html"%}
+
+{%block title%}
+
+{{block.super}}-Create Tag
+
+{%endblock%}
+
+{%block content %}
+<h3>Create New Tag</h3>
+<div>
+    <div>
+        <form
+            action="{%url 'organizer_tag_create' %}"
+            method="post">
+            {%csrf_token%}
+            {{form.as_p}}
+            <!--{{ form.non_field_errors }}-->
+
+            <!--{{ form.name.errors }}-->
+            <!--<p>-->
+                <!--{{ form.name.label_tag }}-->
+                <!--{{ form.name }}-->
+            <!--</p>-->
+            <!--{{ form.slug.errors }}-->
+            <!--<p>-->
+                <!--{{ form.slug.label_tag }}-->
+                <!--{{ form.slug }}-->
+                <!--<span class="helptext">{{ form.slug.help_text }}</span>-->
+            <!--</p>-->
+            <button type="submit">Create Tag</button>
+        </form>
+    </div>
+
+</div>
+
+{%endblock%}

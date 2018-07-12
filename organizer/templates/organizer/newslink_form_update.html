@@ -1,0 +1,24 @@
+{%extends parent_template|default:"organizer/base_organizer.html"%}
+
+{%block title%}
+
+{{block.super}}- Update {{newslink.title}} NewsLink
+
+{%endblock%}
+
+
+{%block content%}
+<div>
+    <div>
+        <form
+            action="{{newslink.get_update_url}}"
+            method = "post">
+            {%csrf_token%}
+            {{form.as_p}}
+            <button type="submit">Update NewsLink</button>
+            &nbsp;&nbsp;
+            <a href="{{newslink.get_absolute_url}}">Cancel</a>
+        </form>
+    </div>
+</div>
+{%endblock%}

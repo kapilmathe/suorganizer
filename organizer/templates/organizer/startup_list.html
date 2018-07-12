@@ -1,0 +1,31 @@
+{% extends parent_template|default:"organizer/base_organizer.html" %}
+
+{%block title %}
+{{block.super}}-Startups
+{%endblock%}
+
+
+{% block content %}
+<h2>Startup List</h2>
+<div>
+    <a href="{% url 'organizer_startup_create'  %}">Create New Startup</a>
+</div>
+
+<ul>
+    {%for startup in startup_list %}
+    <li>
+        <a href="{% url 'organizer_startup_detail' startup.slug %}">
+            {{startup.name}}</a>
+    </li>
+    <ul>
+        <li>
+            <a href = "{{startup.get_update_url}}">Edit Startup</a>
+            &nbsp;&nbsp;
+            <a href="{{startup.get_delete_url}}">Delete Startup</a>
+        </li>
+    </ul>
+    {%empty%}
+    <li><em>No Startuos Available</em></li>
+    {%endfor%}
+</ul>
+{%endblock%}

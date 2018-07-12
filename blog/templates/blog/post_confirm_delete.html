@@ -1,0 +1,22 @@
+{%extends parent_template|default:"organizer/base_organizer.html"%}
+
+{%block title%}
+
+{{block.super}}- Delete Blog
+
+{%endblock%}
+
+
+{%block content%}
+<div>
+    <div>
+        <form
+            action="{{post.get_delete_url}}"
+            method = "post">
+            {%csrf_token%}
+            {{form.as_p}}
+            <button type="submit">Delete Blog</button>
+        </form>
+    </div>
+</div>
+{%endblock%}
